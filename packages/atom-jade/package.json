@@ -1,0 +1,48 @@
+{
+  "name": "atom-jade",
+  "version": "0.1.0",
+  "description": "Jade language support in Atom",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/merrihew/atom-jade"
+  },
+  "keywords": [
+    "atom",
+    "jade"
+  ],
+  "author": {
+    "name": "Tom Merrihew",
+    "email": "tom.merrihew@gmail.com"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/merrihew/atom-jade/issues"
+  },
+  "homepage": "https://github.com/merrihew/atom-jade",
+  "engines": {
+    "atom": "*",
+    "node": "*"
+  },
+  "readme": "atom-jade\n=========\n\nJade language support in Atom Editor.\n\nOriginally converted from the [Jade TextMate bundle](https://github.com/davidrios/jade-tmbundle) and adapted for Atom.\n",
+  "readmeFilename": "README.md",
+  "_id": "atom-jade@0.1.0",
+  "dist": {
+    "shasum": "738a20fe56c1f310ce5061e3a1c9f1f818680c0e"
+  },
+  "_resolved": "/private/var/folders/3n/k28fsdh56gnf21k35h5tt9p80000gn/T/d-115018-830-1vqjumx/package.tgz",
+  "_from": "/private/var/folders/3n/k28fsdh56gnf21k35h5tt9p80000gn/T/d-115018-830-1vqjumx/package.tgz",
+  "_atomModuleCache": {
+    "version": 1,
+    "dependencies": [],
+    "extensions": {
+      ".json": [
+        "package.json"
+      ]
+    },
+    "folders": []
+  }
+}
