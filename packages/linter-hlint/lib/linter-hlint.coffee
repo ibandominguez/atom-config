@@ -9,7 +9,7 @@ class LinterHLint extends Linter
 
   linterName: 'hlint'
 
-  regex: '^[^:]*:(?<line>\\d+):(?<col>\\d+):\\s+\
+  regex: '.+?:(?<line>\\d+):(?<col>\\d+):\\s+\
           ((?<error>Error)|(?<warning>Warning)):\\s*\
           (?<message>.*)'
   regexFlags: 'gms'
@@ -24,8 +24,11 @@ class LinterHLint extends Linter
       return []
     messages = []
     regex = XRegExp @regex, @regexFlags
-    for msg in message.split(/\n\n/)
+    for msg in message.split(/\r?\n\r?\n/)
+      lastLine = @editor.getLineCount()
       XRegExp.forEach msg, regex, (match, i) =>
+        if parseInt(match.line) >= lastLine
+          match.line = lastLine
         messages.push(@createMessage(match))
       , this
     callback messages

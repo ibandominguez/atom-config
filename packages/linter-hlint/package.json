@@ -1,9 +1,9 @@
 {
   "name": "linter-hlint",
   "linter-package": true,
-  "activationEvents": [],
+  "activationCommands": [],
   "main": "./lib/init",
-  "version": "0.3.1",
+  "version": "0.3.5",
   "description": "Lint haskell code with hlint",
   "repository": {
     "type": "git",
@@ -22,10 +22,10 @@
     "url": "https://github.com/AtomLinter/linter-hlint/issues"
   },
   "homepage": "https://github.com/AtomLinter/linter-hlint",
-  "_id": "linter-hlint@0.3.1",
-  "_shasum": "13c6b8d53ac52c334673bff0431f5fcb98c9fd9c",
-  "_resolved": "file:../d-115230-4138-423s70/package.tgz",
-  "_from": "../d-115230-4138-423s70/package.tgz",
+  "_id": "linter-hlint@0.3.5",
+  "_shasum": "64f9567be86bdc1de2a328cca1cd2a9c9e4f87e6",
+  "_resolved": "file:../d-115421-754-q5vhs8/package.tgz",
+  "_from": "../d-115421-754-q5vhs8/package.tgz",
   "_atomModuleCache": {
     "version": 1,
     "dependencies": [
