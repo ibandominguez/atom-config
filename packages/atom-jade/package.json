@@ -1,6 +1,6 @@
 {
   "name": "atom-jade",
-  "version": "0.1.0",
+  "version": "0.3.0",
   "description": "Jade language support in Atom",
   "main": "index.js",
   "scripts": {
@@ -29,12 +29,10 @@
   },
   "readme": "atom-jade\n=========\n\nJade language support in Atom Editor.\n\nOriginally converted from the [Jade TextMate bundle](https://github.com/davidrios/jade-tmbundle) and adapted for Atom.\n",
   "readmeFilename": "README.md",
-  "_id": "atom-jade@0.1.0",
-  "dist": {
-    "shasum": "738a20fe56c1f310ce5061e3a1c9f1f818680c0e"
-  },
-  "_resolved": "/private/var/folders/3n/k28fsdh56gnf21k35h5tt9p80000gn/T/d-115018-830-1vqjumx/package.tgz",
-  "_from": "/private/var/folders/3n/k28fsdh56gnf21k35h5tt9p80000gn/T/d-115018-830-1vqjumx/package.tgz",
+  "_id": "atom-jade@0.3.0",
+  "_shasum": "e94ee361d5ca97c9c3607456e8281f884684e4c4",
+  "_resolved": "file:../d-115431-471-hbnd7g/package.tgz",
+  "_from": "../d-115431-471-hbnd7g/package.tgz",
   "_atomModuleCache": {
     "version": 1,
     "dependencies": [],
