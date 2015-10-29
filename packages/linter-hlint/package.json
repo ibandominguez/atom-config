@@ -1,8 +1,7 @@
 {
   "name": "linter-hlint",
-  "linter-package": true,
-  "main": "./lib/init",
-  "version": "0.3.6",
+  "main": "./lib/init.coffee",
+  "version": "0.4.2",
   "description": "Lint haskell code with hlint",
   "repository": {
     "type": "git",
@@ -10,10 +9,15 @@
   },
   "license": "MIT",
   "engines": {
-    "atom": ">0.50.0"
+    "atom": ">=1.0.0"
   },
-  "dependencies": {
-    "xregexp": "2.0.0"
+  "dependencies": {},
+  "providedServices": {
+    "linter": {
+      "versions": {
+        "1.0.0": "provideLinter"
+      }
+    }
   },
   "readme": "# linter-hlint\n\nThis package will lint your opened Haskell in Atom, using [hlint](http://community.haskell.org/~ndm/hlint/).\n\n## Installation\n\n* Install [hlint](http://community.haskell.org/~ndm/darcs/hlint/hlint.htm#installation).\n* `$ apm install linter` (if you don't have [AtomLinter/Linter](https://github.com/AtomLinter/Linter) installed).\n* `$ apm install language-haskell` (if you don't have [Haskell syntax highlighting](https://github.com/jroesch/language-haskell) installed).\n* `$ apm install linter-hlint`\n* specify the path to hlint in the settings.  You can find the path by using \"which hlint\" in the terminal\n",
   "readmeFilename": "README.md",
@@ -21,42 +25,21 @@
     "url": "https://github.com/AtomLinter/linter-hlint/issues"
   },
   "homepage": "https://github.com/AtomLinter/linter-hlint",
-  "_id": "linter-hlint@0.3.6",
-  "_shasum": "c5d2f331d3afeda7469a46d74bde0dc6bb66d790",
-  "_resolved": "file:../d-115431-485-1p26tw7/package.tgz",
-  "_from": "../d-115431-485-1p26tw7/package.tgz",
+  "_id": "linter-hlint@0.4.2",
+  "_shasum": "c68406d5690be163fbbef7c1a0b41b763cbdc7d8",
+  "_resolved": "file:../d-11574-3831-1kvaggk/package.tgz",
+  "_from": "../d-11574-3831-1kvaggk/package.tgz",
   "_atomModuleCache": {
     "version": 1,
-    "dependencies": [
-      {
-        "name": "xregexp",
-        "version": "2.0.0",
-        "path": "node_modules/xregexp/xregexp-all.js"
-      }
-    ],
+    "dependencies": [],
     "extensions": {
       ".coffee": [
-        "lib/init.coffee",
-        "lib/linter-hlint.coffee"
+        "lib/init.coffee"
       ],
       ".json": [
-        "node_modules/xregexp/package.json",
         "package.json"
-      ],
-      ".js": [
-        "node_modules/xregexp/xregexp-all.js"
       ]
     },
-    "folders": [
-      {
-        "paths": [
-          "lib",
-          ""
-        ],
-        "dependencies": {
-          "xregexp": "2.0.0"
-        }
-      }
-    ]
+    "folders": []
   }
 }
