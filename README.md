@@ -1,11 +1,18 @@
-# atom-config
+# Atom Config
 
 Personal atom config &amp; packages
 
-# use instructions
+## How to use it
 
-clone this repo on your .atom config folder, usually located at ~/.atom
+Make sure you have installed atom https://atom.io/, Ideally you would clone this repo on a fresh
+atom installation
 
-# license
+```sh
+cd ~/.atom
+git clone https://github.com/ibandominguez/atom-config.git .
+rm -rf .git
+```
+
+## License
 
 MIT
