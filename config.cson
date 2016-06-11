@@ -1,15 +1,15 @@
 "*":
+  "autoclose-html": {}
+  core: {}
   editor:
-    invisibles: {}
     fontSize: 15
-  core:
-    themes: [
-      "seti-ui"
-      "seti-monokai"
-    ]
+    invisibles: {}
   "exception-reporting":
     userId: "bd1bca36-db3a-468d-1ae6-863d639c99f6"
+  linter: {}
   welcome:
     showOnStartup: false
-  linter: {}
-  "autoclose-html": {}
+".blade.html.php.text":
+  editor:
+    commentEnd: " --}}"
+    commentStart: "{{-- "
