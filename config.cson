@@ -4,8 +4,6 @@
   editor:
     fontSize: 15
     invisibles: {}
-  "exception-reporting":
-    userId: "bd1bca36-db3a-468d-1ae6-863d639c99f6"
   linter: {}
   welcome:
     showOnStartup: false
