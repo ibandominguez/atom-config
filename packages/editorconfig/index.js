@@ -1,6 +1,8 @@
-'use babel';
-import editorconfig from 'editorconfig';
+/** @babel */
 import generateConfig from './commands/generate';
+
+const lazyReq = require('lazy-req')(require); // eslint-disable-line
+const editorconfig = lazyReq('editorconfig');
 
 function init(editor) {
 	generateConfig();
@@ -11,11 +13,16 @@ function init(editor) {
 
 	const file = editor.getURI();
 
+	const lineEndings = {
+		crlf: '\r\n',
+		lf: '\n'
+	};
+
 	if (!file) {
 		return;
 	}
 
-	editorconfig.parse(file).then(config => {
+	editorconfig().parse(file).then(config => {
 		if (Object.keys(config).length === 0) {
 			return;
 		}
@@ -36,10 +43,15 @@ function init(editor) {
 			}
 		}
 
+		if (config.end_of_line && config.end_of_line in lineEndings) {
+			const preferredLineEnding = lineEndings[config.end_of_line];
+			editor.getBuffer().setPreferredLineEnding(preferredLineEnding);
+		}
+
 		if (config.charset) {
-			// EditorConfig charset names matches iconv charset names.
-			// Which is used by Atom. So no charset name convertion is needed.
-			editor.setEncoding(config.charset);
+			// by default Atom uses charset name without any dashes in them
+			// (i.e. 'utf16le' instead of 'utf-16le').
+			editor.setEncoding(config.charset.replace(/-/g, '').toLowerCase());
 		}
 	});
 }

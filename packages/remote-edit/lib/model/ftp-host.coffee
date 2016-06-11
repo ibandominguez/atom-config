@@ -12,6 +12,11 @@ Path = require 'path'
 _ = require 'underscore-plus'
 fs = require 'fs-plus'
 
+try
+  keytar = require 'keytar'
+catch err
+  console.debug 'Keytar could not be loaded! Passwords will be stored in cleartext to remoteEdit.json!'
+  keytar = undefined
 
 module.exports =
   class FtpHost extends Host
@@ -58,16 +63,18 @@ module.exports =
           toreturn += 1
       return toreturn.toString()
 
+    getServiceNamePassword: ->
+      "atom.remote-edit.ftp.password"
 
     ####################
     # Overridden methods
     getConnectionString: (connectionOptions) ->
-      _.extend({
-        host: @hostname,
-        port: @port,
-        user: @username,
-        password: @password
-      }, connectionOptions)
+      if atom.config.get('remote-edit.storePasswordsUsingKeytar') and (keytar?)
+        keytarPassword = keytar.getPassword(@getServiceNamePassword(), @getServiceAccount())
+        _.extend({host: @hostname, port: @port, user: @username, password: keytarPassword}, connectionOptions)
+      else
+        _.extend({host: @hostname, port: @port, user: @username, password: @password}, connectionOptions)
+
 
     close: (callback) ->
       @connection?.end()
@@ -156,7 +163,7 @@ module.exports =
         @directory
         @username
         @port
-        localFiles: JSON.stringify(localFile?.serialize() for localFile in @localFiles)
+        localFiles: localFile.serialize() for localFile in @localFiles
         @usePassword
         @password
         @lastOpenDirectory
@@ -164,6 +171,6 @@ module.exports =
 
     deserializeParams: (params) ->
       tmpArray = []
-      tmpArray.push(LocalFile.deserialize(localFile, host: this)) for localFile in JSON.parse(params.localFiles)
+      tmpArray.push(LocalFile.deserialize(localFile, host: this)) for localFile in params.localFiles
       params.localFiles = tmpArray
       params

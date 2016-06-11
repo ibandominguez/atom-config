@@ -1,3 +1,4 @@
+_ = require 'underscore-plus'
 # Import needed to register deserializer
 RemoteEditEditor = require './model/remote-edit-editor'
 
@@ -61,6 +62,27 @@ module.exports =
       description: 'When enabled, browsing a host will return you to the last directory you entered'
       type: 'boolean'
       default: false
+    storePasswordsUsingKeytar:
+      title: 'Store passwords using node-keytar'
+      description: 'When enabled, passwords and passphrases will be stored in system\'s keychain'
+      type: 'boolean'
+      default: false
+    filterHostsUsing:
+      type: 'object'
+      properties:
+        hostname:
+          type: 'boolean'
+          default: true
+        alias:
+          type: 'boolean'
+          default: false
+        username:
+          type: 'boolean'
+          default: false
+        port:
+          type: 'boolean'
+          default: false
+
 
   activate: (state) ->
     @setupOpeners()
@@ -133,4 +155,11 @@ module.exports =
         host = Host.deserialize(JSON.parse(decodeURIComponent(query.host)))
 
         atom.project.bufferForPath(localFile.path).then (buffer) ->
-          editor = new RemoteEditEditor({buffer: buffer, registerEditor: true, host: host, localFile: localFile})
+          params = {buffer: buffer, registerEditor: true, host: host, localFile: localFile}
+          # copied from workspace.buildTextEditor
+          ws = atom.workspace
+          params = _.extend({
+            config: ws.config, notificationManager: ws.notificationManager, packageManager: ws.packageManager, clipboard: ws.clipboard, viewRegistry: ws.viewRegistry,
+            grammarRegistry: ws.grammarRegistry, project: ws.project, assert: ws.assert, applicationDelegate: ws.applicationDelegate
+          }, params)
+          editor = new RemoteEditEditor(params)

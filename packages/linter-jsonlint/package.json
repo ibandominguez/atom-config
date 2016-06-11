@@ -1,33 +1,148 @@
 {
   "name": "linter-jsonlint",
-  "linter-package": true,
-  "main": "./lib/init",
-  "version": "0.1.4",
-  "description": "Lint JSON on the fly",
+  "version": "1.2.5",
+  "private": true,
+  "description": "A plugin for Atom Linter providing an interface to jsonlint",
+  "main": "lib/index.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/AtomLinter/linter-jsonlint.git"
   },
-  "license": "MIT",
   "engines": {
-    "atom": ">0.50.0"
+    "atom": ">=1.0.0 <2.0.0"
   },
-  "dependencies": {
-    "jsonlint": "~1.6.0"
+  "scripts": {
+    "test": "eslint ."
   },
-  "readme": "linter-jsonlint\n=========================\n\nThis [Linter](https://github.com/AtomLinter/Linter) plugin provides an interface to [jsonlint](https://github.com/zaach/jsonlint). It will be used with files that have the “JSON” syntax.\n\n## Installation\nLinter package must be installed in order to use this plugin. If Linter is not installed, please follow the instructions [here](https://github.com/AtomLinter/Linter).\n\n### Plugin installation\n```\n$ apm install linter-jsonlint\n```\n\n## Settings\nYou can configure linter-json by editing ~/.atom/config.cson (choose Open Your Config in Atom menu):\n```\n'linter-jsonlint':\n  'jsonExecutablePath': null #jsonlint path. run 'which jsonlint' to find the path\n```\n\n## Contributing\nIf you would like to contribute enhancements or fixes, please do the following:\n\n1. Fork the plugin repository.\n1. Hack on a separate topic branch created from the latest `master`.\n1. Commit and push the topic branch.\n1. Make a pull request.\n1. welcome to the club\n\nPlease note that modications should follow these coding guidelines:\n\n- Indent is 2 spaces.\n- Code should pass coffeelint linter.\n- Vertical whitespace helps readability, don’t be afraid to use it.\n\nThank you for helping out!\n\n## Donation\n[![Share the love!](https://chewbacco-stuff.s3.amazonaws.com/donate.png)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=KXUYS4ARNHCN8)\n",
-  "readmeFilename": "README.md",
+  "keywords": [
+    "json",
+    "lint",
+    "jsonlint"
+  ],
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/AtomLinter/linter-jsonlint/issues"
   },
   "homepage": "https://github.com/AtomLinter/linter-jsonlint#readme",
-  "_id": "linter-jsonlint@0.1.4",
-  "_shasum": "f3455d62eb54ededb60dee853f7e856551dce105",
-  "_resolved": "file:../d-11585-2574-f6a4ui/package.tgz",
-  "_from": "../d-11585-2574-f6a4ui/package.tgz",
+  "dependencies": {
+    "atom-linter": "^4.6.1",
+    "atom-package-deps": "^4.0.1",
+    "jsonlint": "~1.6.2"
+  },
+  "devDependencies": {
+    "eslint": "^2.8.0",
+    "eslint-config-airbnb-base": "^1.0.2",
+    "eslint-plugin-import": "^1.5.0"
+  },
+  "eslintConfig": {
+    "rules": {
+      "comma-dangle": [
+        2,
+        "never"
+      ],
+      "global-require": 0,
+      "import/no-unresolved": [
+        2,
+        {
+          "ignore": [
+            "atom"
+          ]
+        }
+      ]
+    },
+    "extends": "airbnb-base",
+    "globals": {
+      "atom": true
+    },
+    "env": {
+      "es6": true,
+      "node": true
+    }
+  },
+  "package-deps": [
+    "linter"
+  ],
+  "providedServices": {
+    "linter": {
+      "versions": {
+        "1.0.0": "provideLinter"
+      }
+    }
+  },
+  "readme": "# linter-jsonlint [![Dependency Status](https://david-dm.org/AtomLinter/linter-jsonlint.svg)](https://david-dm.org/AtomLinter/linter-jsonlint)\n\nA plugin for [Atom Linter](https://github.com/AtomLinter/atom-linter) providing\nan interface to [jsonlint](https://github.com/zaach/jsonlint). It will be used\nwith files that have the **JSON** syntax.\n\n![demo](https://cloud.githubusercontent.com/assets/427137/12154907/2d6cd53c-b477-11e5-94bb-74f7effbff25.png)\n\n## Installation\n\n```ShellSession\n$ apm install linter-jsonlint\n```\n",
+  "readmeFilename": "README.md",
+  "_id": "linter-jsonlint@1.2.5",
+  "_shasum": "7610ab890df513da70acee33bcbdc1b3948332d3",
+  "_resolved": "file:../d-116511-4355-1234h9t/package.tgz",
+  "_from": "../d-116511-4355-1234h9t/package.tgz",
   "_atomModuleCache": {
     "version": 1,
     "dependencies": [
+      {
+        "name": "atom-linter",
+        "version": "4.7.0",
+        "path": "node_modules/atom-linter/lib/index.js"
+      },
+      {
+        "name": "named-js-regexp",
+        "version": "1.3.1",
+        "path": "node_modules/atom-linter/node_modules/named-js-regexp/lib/named-js-regexp.js"
+      },
+      {
+        "name": "sb-exec",
+        "version": "1.0.5",
+        "path": "node_modules/atom-linter/node_modules/sb-exec/lib/index.js"
+      },
+      {
+        "name": "consistent-env",
+        "version": "1.2.0",
+        "path": "node_modules/atom-linter/node_modules/sb-exec/node_modules/consistent-env/lib/index.js"
+      },
+      {
+        "name": "extify",
+        "version": "1.0.0",
+        "path": "node_modules/atom-linter/node_modules/sb-exec/node_modules/extify/lib/index.js"
+      },
+      {
+        "name": "sb-npm-path",
+        "version": "1.0.0",
+        "path": "node_modules/atom-linter/node_modules/sb-exec/node_modules/sb-npm-path/lib/index.js"
+      },
+      {
+        "name": "sb-memoize",
+        "version": "1.0.2",
+        "path": "node_modules/atom-linter/node_modules/sb-exec/node_modules/sb-npm-path/node_modules/sb-memoize/lib/index.js"
+      },
+      {
+        "name": "sb-promisify",
+        "version": "1.3.0",
+        "path": "node_modules/atom-linter/node_modules/sb-promisify/lib/index.js"
+      },
+      {
+        "name": "tmp",
+        "version": "0.0.28",
+        "path": "node_modules/atom-linter/node_modules/tmp/lib/tmp.js"
+      },
+      {
+        "name": "os-tmpdir",
+        "version": "1.0.1",
+        "path": "node_modules/atom-linter/node_modules/tmp/node_modules/os-tmpdir/index.js"
+      },
+      {
+        "name": "atom-package-deps",
+        "version": "4.0.1",
+        "path": "node_modules/atom-package-deps/lib/index.js"
+      },
+      {
+        "name": "atom-package-path",
+        "version": "1.1.0",
+        "path": "node_modules/atom-package-deps/node_modules/atom-package-path/lib/index.js"
+      },
+      {
+        "name": "sb-callsite",
+        "version": "1.1.2",
+        "path": "node_modules/atom-package-deps/node_modules/atom-package-path/node_modules/sb-callsite/lib/main.js"
+      },
       {
         "name": "jsonlint",
         "version": "1.6.2",
@@ -70,37 +185,31 @@
       }
     ],
     "extensions": {
-      ".coffee": [
-        "lib/init.coffee",
-        "lib/linter-jsonlint.coffee"
-      ],
-      ".json": [
-        "node_modules/jsonlint/bower.json",
-        "node_modules/jsonlint/node_modules/JSV/package.json",
-        "node_modules/jsonlint/node_modules/JSV/schemas/json-schema-draft-01/empty-schema.json",
-        "node_modules/jsonlint/node_modules/JSV/schemas/json-schema-draft-01/hyper-schema.json",
-        "node_modules/jsonlint/node_modules/JSV/schemas/json-schema-draft-01/json-ref.json",
-        "node_modules/jsonlint/node_modules/JSV/schemas/json-schema-draft-01/links.json",
-        "node_modules/jsonlint/node_modules/JSV/schemas/json-schema-draft-01/schema.json",
-        "node_modules/jsonlint/node_modules/JSV/schemas/json-schema-draft-02/empty-schema.json",
-        "node_modules/jsonlint/node_modules/JSV/schemas/json-schema-draft-02/hyper-schema.json",
-        "node_modules/jsonlint/node_modules/JSV/schemas/json-schema-draft-02/json-ref.json",
-        "node_modules/jsonlint/node_modules/JSV/schemas/json-schema-draft-02/links.json",
-        "node_modules/jsonlint/node_modules/JSV/schemas/json-schema-draft-02/schema.json",
-        "node_modules/jsonlint/node_modules/JSV/schemas/json-schema-draft-03/hyper-schema.json",
-        "node_modules/jsonlint/node_modules/JSV/schemas/json-schema-draft-03/json-ref.json",
-        "node_modules/jsonlint/node_modules/JSV/schemas/json-schema-draft-03/links.json",
-        "node_modules/jsonlint/node_modules/JSV/schemas/json-schema-draft-03/schema.json",
-        "node_modules/jsonlint/node_modules/nomnom/node_modules/chalk/node_modules/ansi-styles/package.json",
-        "node_modules/jsonlint/node_modules/nomnom/node_modules/chalk/node_modules/has-color/package.json",
-        "node_modules/jsonlint/node_modules/nomnom/node_modules/chalk/node_modules/strip-ansi/package.json",
-        "node_modules/jsonlint/node_modules/nomnom/node_modules/chalk/package.json",
-        "node_modules/jsonlint/node_modules/nomnom/node_modules/underscore/package.json",
-        "node_modules/jsonlint/node_modules/nomnom/package.json",
-        "node_modules/jsonlint/package.json",
-        "package.json"
-      ],
       ".js": [
+        "lib/index.js",
+        "node_modules/atom-linter/lib/helpers.js",
+        "node_modules/atom-linter/lib/index.js",
+        "node_modules/atom-linter/lib/types.js",
+        "node_modules/atom-linter/node_modules/named-js-regexp/lib/named-js-regexp.js",
+        "node_modules/atom-linter/node_modules/sb-exec/lib/helpers.js",
+        "node_modules/atom-linter/node_modules/sb-exec/lib/index.js",
+        "node_modules/atom-linter/node_modules/sb-exec/lib/types.js",
+        "node_modules/atom-linter/node_modules/sb-exec/node_modules/consistent-env/lib/helpers.js",
+        "node_modules/atom-linter/node_modules/sb-exec/node_modules/consistent-env/lib/index.js",
+        "node_modules/atom-linter/node_modules/sb-exec/node_modules/extify/lib/helpers.js",
+        "node_modules/atom-linter/node_modules/sb-exec/node_modules/extify/lib/index.js",
+        "node_modules/atom-linter/node_modules/sb-exec/node_modules/sb-npm-path/lib/helpers.js",
+        "node_modules/atom-linter/node_modules/sb-exec/node_modules/sb-npm-path/lib/index.js",
+        "node_modules/atom-linter/node_modules/sb-exec/node_modules/sb-npm-path/node_modules/sb-memoize/lib/index.js",
+        "node_modules/atom-linter/node_modules/sb-promisify/lib/index.js",
+        "node_modules/atom-linter/node_modules/tmp/Gruntfile.js",
+        "node_modules/atom-linter/node_modules/tmp/lib/tmp.js",
+        "node_modules/atom-linter/node_modules/tmp/node_modules/os-tmpdir/index.js",
+        "node_modules/atom-package-deps/lib/helpers.js",
+        "node_modules/atom-package-deps/lib/index.js",
+        "node_modules/atom-package-deps/lib/view.js",
+        "node_modules/atom-package-deps/node_modules/atom-package-path/lib/index.js",
+        "node_modules/atom-package-deps/node_modules/atom-package-path/node_modules/sb-callsite/lib/main.js",
         "node_modules/jsonlint/lib/cli.js",
         "node_modules/jsonlint/lib/formatter.js",
         "node_modules/jsonlint/lib/jsonlint.js",
@@ -170,16 +279,127 @@
         "node_modules/jsonlint/scripts/bundle.js",
         "node_modules/jsonlint/web/json2.js",
         "node_modules/jsonlint/web/jsonlint.js"
+      ],
+      ".json": [
+        "node_modules/atom-linter/node_modules/named-js-regexp/package.json",
+        "node_modules/atom-linter/node_modules/sb-exec/.eslintrc.json",
+        "node_modules/atom-linter/node_modules/sb-exec/node_modules/consistent-env/package.json",
+        "node_modules/atom-linter/node_modules/sb-exec/node_modules/extify/.eslintrc.json",
+        "node_modules/atom-linter/node_modules/sb-exec/node_modules/extify/package.json",
+        "node_modules/atom-linter/node_modules/sb-exec/node_modules/sb-npm-path/.eslintrc.json",
+        "node_modules/atom-linter/node_modules/sb-exec/node_modules/sb-npm-path/node_modules/sb-memoize/.eslintrc.json",
+        "node_modules/atom-linter/node_modules/sb-exec/node_modules/sb-npm-path/node_modules/sb-memoize/package.json",
+        "node_modules/atom-linter/node_modules/sb-exec/node_modules/sb-npm-path/package.json",
+        "node_modules/atom-linter/node_modules/sb-exec/package.json",
+        "node_modules/atom-linter/node_modules/sb-promisify/package.json",
+        "node_modules/atom-linter/node_modules/tmp/node_modules/os-tmpdir/package.json",
+        "node_modules/atom-linter/node_modules/tmp/package.json",
+        "node_modules/atom-linter/package.json",
+        "node_modules/atom-package-deps/node_modules/atom-package-path/node_modules/sb-callsite/package.json",
+        "node_modules/atom-package-deps/node_modules/atom-package-path/package.json",
+        "node_modules/atom-package-deps/package.json",
+        "node_modules/jsonlint/bower.json",
+        "node_modules/jsonlint/node_modules/JSV/package.json",
+        "node_modules/jsonlint/node_modules/JSV/schemas/json-schema-draft-01/empty-schema.json",
+        "node_modules/jsonlint/node_modules/JSV/schemas/json-schema-draft-01/hyper-schema.json",
+        "node_modules/jsonlint/node_modules/JSV/schemas/json-schema-draft-01/json-ref.json",
+        "node_modules/jsonlint/node_modules/JSV/schemas/json-schema-draft-01/links.json",
+        "node_modules/jsonlint/node_modules/JSV/schemas/json-schema-draft-01/schema.json",
+        "node_modules/jsonlint/node_modules/JSV/schemas/json-schema-draft-02/empty-schema.json",
+        "node_modules/jsonlint/node_modules/JSV/schemas/json-schema-draft-02/hyper-schema.json",
+        "node_modules/jsonlint/node_modules/JSV/schemas/json-schema-draft-02/json-ref.json",
+        "node_modules/jsonlint/node_modules/JSV/schemas/json-schema-draft-02/links.json",
+        "node_modules/jsonlint/node_modules/JSV/schemas/json-schema-draft-02/schema.json",
+        "node_modules/jsonlint/node_modules/JSV/schemas/json-schema-draft-03/hyper-schema.json",
+        "node_modules/jsonlint/node_modules/JSV/schemas/json-schema-draft-03/json-ref.json",
+        "node_modules/jsonlint/node_modules/JSV/schemas/json-schema-draft-03/links.json",
+        "node_modules/jsonlint/node_modules/JSV/schemas/json-schema-draft-03/schema.json",
+        "node_modules/jsonlint/node_modules/nomnom/node_modules/chalk/node_modules/ansi-styles/package.json",
+        "node_modules/jsonlint/node_modules/nomnom/node_modules/chalk/node_modules/has-color/package.json",
+        "node_modules/jsonlint/node_modules/nomnom/node_modules/chalk/node_modules/strip-ansi/package.json",
+        "node_modules/jsonlint/node_modules/nomnom/node_modules/chalk/package.json",
+        "node_modules/jsonlint/node_modules/nomnom/node_modules/underscore/package.json",
+        "node_modules/jsonlint/node_modules/nomnom/package.json",
+        "node_modules/jsonlint/package.json",
+        "package.json"
       ]
     },
     "folders": [
       {
         "paths": [
           "lib",
-          ""
+          "",
+          "spec",
+          "spec/fixtures"
         ],
         "dependencies": {
-          "jsonlint": "~1.6.0"
+          "atom-linter": "^4.6.1",
+          "atom-package-deps": "^4.0.1",
+          "jsonlint": "~1.6.2"
+        }
+      },
+      {
+        "paths": [
+          "node_modules/atom-linter/lib",
+          "node_modules/atom-linter"
+        ],
+        "dependencies": {
+          "named-js-regexp": "^1.3.1",
+          "sb-exec": "^1.0.4",
+          "sb-promisify": "^1.0.0",
+          "tmp": "~0.0.28"
+        }
+      },
+      {
+        "paths": [
+          "node_modules/atom-linter/node_modules/sb-exec",
+          "node_modules/atom-linter/node_modules/sb-exec/lib"
+        ],
+        "dependencies": {
+          "consistent-env": "^1.0.1",
+          "extify": "^1.0.0",
+          "sb-npm-path": "^1.0.0"
+        }
+      },
+      {
+        "paths": [
+          "node_modules/atom-linter/node_modules/sb-exec/node_modules/sb-npm-path",
+          "node_modules/atom-linter/node_modules/sb-exec/node_modules/sb-npm-path/lib",
+          "node_modules/atom-linter/node_modules/sb-exec/node_modules/sb-npm-path/spec"
+        ],
+        "dependencies": {
+          "sb-memoize": "^1.0.1",
+          "sb-promisify": "^1.2.0"
+        }
+      },
+      {
+        "paths": [
+          "node_modules/atom-linter/node_modules/tmp",
+          "node_modules/atom-linter/node_modules/tmp/lib",
+          "node_modules/atom-linter/node_modules/tmp/test",
+          "node_modules/atom-linter/node_modules/tmp/test/symlinkme"
+        ],
+        "dependencies": {
+          "os-tmpdir": "~1.0.1"
+        }
+      },
+      {
+        "paths": [
+          "node_modules/atom-package-deps/lib",
+          "node_modules/atom-package-deps"
+        ],
+        "dependencies": {
+          "atom-package-path": "^1.1.0"
+        }
+      },
+      {
+        "paths": [
+          "node_modules/atom-package-deps/node_modules/atom-package-path/lib",
+          "node_modules/atom-package-deps/node_modules/atom-package-path",
+          "node_modules/atom-package-deps/node_modules/atom-package-path/spec"
+        ],
+        "dependencies": {
+          "sb-callsite": "^1.1.2"
         }
       },
       {

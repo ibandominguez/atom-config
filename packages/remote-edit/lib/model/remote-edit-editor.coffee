@@ -7,7 +7,6 @@ catch e
 TextEditor = Editor ? require path.resolve resourcePath, 'src', 'text-editor'
 
 DisplayBuffer = require path.resolve resourcePath, 'src', 'display-buffer'
-Serializable = require 'serializable'
 
 # Defer requiring
 Host = null
@@ -20,13 +19,14 @@ _ = null
 
 module.exports =
   class RemoteEditEditor extends TextEditor
-    Serializable.includeInto(this)
     atom.deserializers.add(this)
 
-    TextEditor.registerDeserializer(RemoteEditEditor)
-
-    constructor: ({@softTabs, initialLine, initialColumn, tabLength, softWrap, @displayBuffer, buffer, registerEditor, suppressCursorCreation, @mini, @host, @localFile}) ->
-      super({@softTabs, initialLine, initialColumn, tabLength, softWrap, @displayBuffer, buffer, registerEditor, suppressCursorCreation, @mini})
+    constructor: (params = {}) ->
+      super(params)
+      if params.host
+        @host = params.host
+      if params.localFile
+        @localFile = params.localFile
 
     getIconName: ->
       "globe"
@@ -127,25 +127,43 @@ module.exports =
       else
         console.error 'LocalFile and host not defined. Cannot upload file!'
 
-    serializeParams: ->
-      id: @id
-      softTabs: @softTabs
-      scrollTop: @scrollTop
-      scrollLeft: @scrollLeft
-      displayBuffer: @displayBuffer.serialize()
-      title: @title
-      localFile: @localFile?.serialize()
-      host: @host?.serialize()
+    serialize: ->
+      data = super
+      data.deserializer = 'RemoteEditEditor'
+      data.localFile = @localFile?.serialize()
+      data.host = @host?.serialize()
+      return data
 
-    deserializeParams: (params) ->
-      params.displayBuffer = DisplayBuffer.deserialize(params.displayBuffer)
-      params.registerEditor = true
-      if params.localFile?
+    # mostly copied from TextEditor.deserialize
+    @deserialize: (state, atomEnvironment) ->
+      try
+        displayBuffer = DisplayBuffer.deserialize(state.displayBuffer, atomEnvironment)
+      catch error
+        if error.syscall is 'read'
+          return # error reading the file, dont deserialize an editor for it
+        else
+          throw error
+
+      state.displayBuffer = displayBuffer
+      state.registerEditor = true
+      if state.localFile?
         LocalFile = require '../model/local-file'
-        params.localFile = LocalFile.deserialize(params.localFile)
-      if params.host?
+        state.localFile = LocalFile.deserialize(state.localFile)
+      if state.host?
         Host = require '../model/host'
         FtpHost = require '../model/ftp-host'
         SftpHost = require '../model/sftp-host'
-        params.host = Host.deserialize(params.host)
-      params
+        state.host = Host.deserialize(state.host)
+      # displayBuffer has no getMarkerLayer
+      #state.selectionsMarkerLayer = displayBuffer.getMarkerLayer(state.selectionsMarkerLayerId)
+      state.config = atomEnvironment.config
+      state.notificationManager = atomEnvironment.notifications
+      state.packageManager = atomEnvironment.packages
+      state.clipboard = atomEnvironment.clipboard
+      state.viewRegistry = atomEnvironment.views
+      state.grammarRegistry = atomEnvironment.grammars
+      state.project = atomEnvironment.project
+      state.assert = atomEnvironment.assert.bind(atomEnvironment)
+      state.applicationDelegate = atomEnvironment.applicationDelegate
+      new this(state)
+

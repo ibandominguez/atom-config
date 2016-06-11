@@ -1,7 +1,7 @@
 {
   "main": "./index.coffee",
   "name": "pretty-json",
-  "version": "0.4.1",
+  "version": "1.4.1",
   "description": "Format JSON",
   "keywords": [
     "JSON",
@@ -20,26 +20,37 @@
     "atom": "*"
   },
   "dependencies": {
-    "json-stable-stringify": "~0.1.1",
-    "jsonminify": "^0.2.3"
+    "json-bigint": "^0.2.0",
+    "json-stable-stringify": "^1.0.1",
+    "jsonminify": "^0.4.1"
   },
   "scripts": {},
-  "readme": "Pretty JSON\n===========\n\n[Atom](http://atom.io/) plugin. Format JSON documents.\n\n![](http://i.imgur.com/Nd4GvtP.gif)\n\nJust select the text to format and select the prettify command. In a JSON file, it formats the whole file.\n",
+  "readme": "# Pretty JSON\n\n[![apm package][apm-ver-link]][releases]\n[![][travis-ci-badge]][travis-ci]\n[![][david-badge]][david]\n[![][dl-badge]][apm-pkg-link]\n[![][mit-badge]][mit]\n\n[Atom](http://atom.io/) plugin to format JSON documents.\n\n![](http://i.imgur.com/Nd4GvtP.gif)\n\nSelect the text to format and then execute the Pretty JSON `prettify` command. For JSON files, format the entire file automatically without need to first select the text. Minify and sorting commands are available too.\n\nThis plugin will post a notification to Atom if there is a parse error in the JSON. Disable warnings in this plugin's settings panel if you do not desire this feature.\n\nTo proactively avoid JSON errors, consider using a linter for JSON, such as the delightful [linter-jsonlint](https://atom.io/packages/linter-jsonlint).\n\n---\n\n[MIT][mit] © [federomero][author] et [al][contributors]\n\n[mit]:              http://opensource.org/licenses/MIT\n[author]:           http://github.com/federomero\n[contributors]:     https://github.com/federomero/pretty-json/graphs/contributors\n[releases]:         https://github.com/federomero/pretty-json/releases\n[mit-badge]:        https://img.shields.io/apm/l/pretty-json.svg\n[apm-pkg-link]:     https://atom.io/packages/pretty-json\n[apm-ver-link]:     https://img.shields.io/apm/v/pretty-json.svg\n[dl-badge]:         http://img.shields.io/apm/dm/pretty-json.svg\n[travis-ci-badge]:  https://travis-ci.org/federomero/pretty-json.svg?branch=master\n[travis-ci]:        https://travis-ci.org/federomero/pretty-json\n[david-badge]:      https://david-dm.org/federomero/pretty-json.svg\n[david]:            https://david-dm.org/federomero/pretty-json\n",
   "readmeFilename": "README.md",
   "bugs": {
     "url": "https://github.com/federomero/pretty-json/issues"
   },
   "homepage": "https://github.com/federomero/pretty-json#readme",
-  "_id": "pretty-json@0.4.1",
-  "_shasum": "de86743b77f6ea75dcd02d86f604a2b427ab7371",
-  "_resolved": "file:../d-11585-2564-35z6n2/package.tgz",
-  "_from": "../d-11585-2564-35z6n2/package.tgz",
+  "_id": "pretty-json@1.4.1",
+  "_shasum": "4a19417acf4f5a74b55a52c8a450f8c56d408f12",
+  "_resolved": "file:../d-116511-4366-g5yjqq/package.tgz",
+  "_from": "../d-116511-4366-g5yjqq/package.tgz",
   "_atomModuleCache": {
     "version": 1,
     "dependencies": [
       {
+        "name": "json-bigint",
+        "version": "0.2.0",
+        "path": "node_modules/json-bigint/index.js"
+      },
+      {
+        "name": "bignumber.js",
+        "version": "1.1.1",
+        "path": "node_modules/json-bigint/node_modules/bignumber.js/bignumber.js"
+      },
+      {
         "name": "json-stable-stringify",
-        "version": "0.1.3",
+        "version": "1.0.1",
         "path": "node_modules/json-stable-stringify/index.js"
       },
       {
@@ -49,15 +60,40 @@
       },
       {
         "name": "jsonminify",
-        "version": "0.2.3",
+        "version": "0.4.1",
         "path": "node_modules/jsonminify/minify.json.js"
       }
     ],
     "extensions": {
+      ".json": [
+        "coffeelint.json",
+        "node_modules/json-bigint/node_modules/bignumber.js/package.json",
+        "node_modules/json-bigint/package.json",
+        "node_modules/json-stable-stringify/node_modules/jsonify/package.json",
+        "node_modules/json-stable-stringify/package.json",
+        "node_modules/jsonminify/.jsdoc3.json",
+        "node_modules/jsonminify/package.json",
+        "node_modules/jsonminify/report/files/minify_json_js/report.history.json",
+        "node_modules/jsonminify/report/files/minify_json_js/report.json",
+        "node_modules/jsonminify/report/report.history.json",
+        "node_modules/jsonminify/report/report.json",
+        "package.json"
+      ],
       ".coffee": [
         "index.coffee"
       ],
       ".js": [
+        "node_modules/json-bigint/index.js",
+        "node_modules/json-bigint/lib/parse.js",
+        "node_modules/json-bigint/lib/stringify.js",
+        "node_modules/json-bigint/node_modules/bignumber.js/bignumber.js",
+        "node_modules/json-bigint/node_modules/bignumber.js/bignumber.min.js",
+        "node_modules/json-bigint/node_modules/bignumber.js/perf/bigtime-OOM.js",
+        "node_modules/json-bigint/node_modules/bignumber.js/perf/bigtime.js",
+        "node_modules/json-bigint/node_modules/bignumber.js/perf/lib/bigdecimal_GWT/bigdecimal.js",
+        "node_modules/json-bigint/node_modules/bignumber.js/perf/lib/bigdecimal_GWT/bugs.js",
+        "node_modules/json-bigint/node_modules/bignumber.js/perf/lib/bigdecimal_ICU4J/BigDecimal-all-last.js",
+        "node_modules/json-bigint/node_modules/bignumber.js/perf/lib/bigdecimal_ICU4J/BigDecimal-all-last.min.js",
         "node_modules/json-stable-stringify/example/key_cmp.js",
         "node_modules/json-stable-stringify/example/nested.js",
         "node_modules/json-stable-stringify/example/str.js",
@@ -73,6 +109,7 @@
         "node_modules/jsonminify/report/assets/scripts/bundles/codemirror.js",
         "node_modules/jsonminify/report/assets/scripts/bundles/core-bundle.js",
         "node_modules/jsonminify/report/assets/scripts/codemirror.markpopovertext.js",
+        "node_modules/jsonminify/report/assets/scripts/plato-display.js",
         "node_modules/jsonminify/report/assets/scripts/plato-file.js",
         "node_modules/jsonminify/report/assets/scripts/plato-overview.js",
         "node_modules/jsonminify/report/assets/scripts/plato-sortable-file-list.js",
@@ -109,28 +146,29 @@
         "node_modules/jsonminify/report/files/minify_json_js/report.js",
         "node_modules/jsonminify/report/report.history.js",
         "node_modules/jsonminify/report/report.js"
-      ],
-      ".json": [
-        "node_modules/json-stable-stringify/node_modules/jsonify/package.json",
-        "node_modules/json-stable-stringify/package.json",
-        "node_modules/jsonminify/.jsdoc3.json",
-        "node_modules/jsonminify/package.json",
-        "node_modules/jsonminify/report/files/minify_json_js/report.history.json",
-        "node_modules/jsonminify/report/files/minify_json_js/report.json",
-        "node_modules/jsonminify/report/report.history.json",
-        "node_modules/jsonminify/report/report.json",
-        "package.json"
       ]
     },
     "folders": [
       {
         "paths": [
           "",
+          "spec/fixtures",
           "spec"
         ],
         "dependencies": {
-          "json-stable-stringify": "~0.1.1",
-          "jsonminify": "^0.2.3"
+          "json-bigint": "^0.2.0",
+          "json-stable-stringify": "^1.0.1",
+          "jsonminify": "^0.4.1"
+        }
+      },
+      {
+        "paths": [
+          "node_modules/json-bigint",
+          "node_modules/json-bigint/lib",
+          "node_modules/json-bigint/test"
+        ],
+        "dependencies": {
+          "bignumber.js": "~1.1.1"
         }
       },
       {
