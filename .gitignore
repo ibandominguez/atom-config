@@ -1,7 +1,1 @@
-storage
-compile-cache
-dev
-.npm
-.node-gyp
-.apm
-blob-store
+.DS_Store
