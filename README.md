@@ -4,14 +4,7 @@ Personal atom config &amp; packages
 
 ## How to use it
 
-Make sure you have installed atom https://atom.io/, Ideally you would clone this repo on a fresh
-atom installation
-
-```sh
-cd ~/.atom
-git clone https://github.com/ibandominguez/atom-config.git .
-rm -rf .git
-```
+This repository intends to keep track of the config and packages used on my personal dev environment.
 
 ## Useful commands
 
