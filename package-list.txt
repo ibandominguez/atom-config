@@ -4,9 +4,10 @@ autoclose-html@0.23.0
 autocomplete-clang@0.9.4
 build@0.65.0
 busy@0.7.0
-editorconfig@1.4.1
+editorconfig@2.0.0
 json-colorer@0.3.0
 language-blade@0.25.3
+language-gradle@0.0.3
 language-ini@1.16.0
 language-jade@0.7.2
 linter@1.11.16
@@ -20,4 +21,7 @@ linter-php@1.2.0
 platformio-ide@1.5.0
 platformio-ide-terminal@2.2.0
 pretty-json@1.6.0
+react@0.16.1
 tool-bar@1.0.1
+
+
